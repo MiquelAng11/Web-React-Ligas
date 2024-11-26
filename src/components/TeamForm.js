@@ -1,4 +1,3 @@
-// components/TeamForm.js
 import React, { useState } from 'react';
 
 function TeamForm({ addTeam, addPlayerToTeam, teams }) {
@@ -46,11 +45,15 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
           required
         >
           <option value="" disabled>Selecciona un equipo</option>
-          {teams.map((team, index) => (
-            <option key={index} value={team.teamName}>
-              {team.teamName}
-            </option>
-          ))}
+          {teams && teams.length > 0 ? (
+            teams.map((team, index) => (
+              <option key={index} value={team.teamName}>
+                {team.teamName}
+              </option>
+            ))
+          ) : (
+            <option value="" disabled>No hay equipos disponibles</option>
+          )}
         </select>
         <label>Nombre del Jugador:</label>
         <input
@@ -60,7 +63,11 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
           required
         />
         <label>Posición:</label>
-        <select value={position} onChange={(e) => setPosition(e.target.value)} required>
+        <select 
+          value={position} 
+          onChange={(e) => setPosition(e.target.value)} 
+          required
+        >
           <option value="Portero">Portero</option>
           <option value="Defensa">Defensa</option>
           <option value="Mediocampista">Mediocampista</option>
