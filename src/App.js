@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import Equipos from './pages/equipos';
 import Torneos from './pages/torneos';
@@ -18,34 +18,39 @@ function App() {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('currentUser');
+    setUser(null);
+  };
+
   return (
     <Router>
       <div className="app">
-        <Navbar />
-        <div className="content">
-          <div className="header">
-            {user ? (
-              <div className="user-icon">
-                <span>👤</span>
-                <Link to="/settings">Ajustes</Link>
-                <button className="logout-button" onClick={() => setUser(null)}>🔴</button>
-              </div>
-            ) : (
-              <span>Inicia sesión</span>
-            )}
-          </div>
-          <Routes>
-            <Route path="/equipos" element={<Equipos />} />
-            <Route path="/torneos" element={<Torneos />} />
-            <Route path="/jugadores" element={<Jugadores />} />
-            <Route path="/settings" element={<UserSettings />} />
-            <Route path="/" element={
-                <div className="main">
-                  <h1>Bienvenido</h1>
+        {user ? (
+          <>
+            <Navbar />
+            <div className="content">
+              <div className="header">
+                <div className="user-icon">
+                  <span>👤</span>
+                  <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
                 </div>
-            } />
+              </div>
+              <Routes>
+                <Route path="/equipos" element={<Equipos />} />
+                <Route path="/torneos" element={<Torneos />} />
+                <Route path="/jugadores" element={<Jugadores />} />
+                <Route path="/settings" element={<UserSettings />} />
+                <Route path="/" element={<div className="main"><h1>Bienvenido</h1></div>} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </div>
+          </>
+        ) : (
+          <Routes>
+            <Route path="*" element={<LoginForm setUser={setUser} />} />
           </Routes>
-        </div>
+        )}
       </div>
     </Router>
   );
