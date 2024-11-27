@@ -37,3 +37,4 @@ function Navbar({ user, handleLogout }) {
 }
 
 export default Navbar;
+  

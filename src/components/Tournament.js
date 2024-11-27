@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/TournamentForm.css'; // Importamos los estilos
+import '../styles/TournamentForm.css'; // Importamos el CSS actualizado
 
 function Tournament({ teams = [], addTournament, addRoundRobin }) {
   const [tournamentName, setTournamentName] = useState('');
@@ -8,31 +8,29 @@ function Tournament({ teams = [], addTournament, addRoundRobin }) {
   const [roundRobinDate, setRoundRobinDate] = useState('');
 
   const handleCreateTournament = () => {
-    console.log("Equipos disponibles para torneo:", teams); // Verificar los equipos
     if (teams.length < 2) {
-      alert("Se necesitan al menos 2 equipos para crear un torneo.");
+      alert('Se necesitan al menos 2 equipos para crear un torneo.');
       return;
     }
-    const rounds = []; // Aquí se puede generar la lógica para las rondas
+    const rounds = [];
     addTournament?.({ name: tournamentName, date: tournamentDate, rounds });
     setTournamentName('');
     setTournamentDate('');
   };
 
   const handleCreateRoundRobin = () => {
-    console.log("Equipos disponibles para liguilla:", teams); // Verificar los equipos
     if (teams.length < 2) {
-      alert("Se necesitan al menos 2 equipos para crear una liguilla.");
+      alert('Se necesitan al menos 2 equipos para crear una liguilla.');
       return;
     }
-    const matches = []; // Aquí se puede generar la lógica para los partidos
+    const matches = [];
     addRoundRobin?.({ name: roundRobinName, date: roundRobinDate, matches });
     setRoundRobinName('');
     setRoundRobinDate('');
   };
 
   return (
-    <div className="team-form-container">
+    <div className="tournament-form-container">
       <h2>Crear Torneo</h2>
       <label>Nombre del Torneo:</label>
       <input

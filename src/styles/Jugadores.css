@@ -1,0 +1,61 @@
+.jugadores-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos salten a nuevas filas */
+    justify-content: center; /* Centra las filas horizontalmente */
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+.jugadores-title {
+    color: #ffa500;
+    font-size: 2em;
+    margin-bottom: 20px;
+    width: 100%; /* Título ocupa todo el ancho */
+    text-align: center; /* Centra el texto del título */
+}
+
+.team-card {
+    flex: 1 1 calc(33.333% - 20px); /* Ocupa un tercio del ancho menos el espacio del gap */
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: calc(33.333% - 20px); /* Evita que las tarjetas crezcan más allá de su espacio asignado */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del tamaño */
+}
+
+.team-name {
+    color: #ffa500;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center; /* Centra el nombre del equipo */
+}
+
+.player-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.player-item {
+    font-size: 1.1em;
+    color: #f0f0f0;
+    border-bottom: 1px solid #404040;
+    padding: 10px 0;
+}
+
+.player-item:last-child {
+    border-bottom: none;
+}
+
+.player-position {
+    font-weight: bold;
+    color: #ffa500;
+}
+
+.no-teams,
+.no-players {
+    font-size: 1.2em;
+    color: #f0f0f0;
+    text-align: center;
+}

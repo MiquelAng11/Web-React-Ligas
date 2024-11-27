@@ -98,7 +98,7 @@ function App() {
                       />
                     }
                   />
-                  <Route path="/jugadores" element={<Jugadores />} />
+                  <Route path="/jugadores" element={<Jugadores teams={teams} />} />
                   <Route path="/settings" element={<UserSettings />} />
                   <Route path="/" element={<h1>Bienvenido</h1>} />
                   <Route path="*" element={<Navigate to="/" />} />
