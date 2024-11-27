@@ -1,56 +1,76 @@
-/* Navbar actualizado */
 .navbar {
   background-color: #1c1c1c;
   color: white;
   width: 250px;
-  min-height: 100vh; /* Asegura que ocupe al menos la altura de la pantalla */
+  min-height: 100vh; /* Ocupa al menos toda la altura */
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  overflow-y: auto; /* Habilitar scroll interno si es necesario */
-  
-} 
- .navbar-title {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: #ffa500;
-    text-align: left;
-  }
-  
-  .navbar-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .navbar-links li {
-    margin-bottom: 15px;
-  }
-  
-  .navbar-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-    transition: color 0.3s;
-  }
-  
-  .navbar-links li a:hover {
-    color: #ffa500;
-  }
-  
-  .navbar-links li.active a {
-    font-weight: bold;
-    color: #ffa500;
-  }
+  justify-content: space-between; /* Espacia enlaces y usuario */
+  overflow-y: auto;
+}
 
-  .navbar-title-link {
-    text-decoration: none;
-    color: inherit; /* Usa el color del contenedor padre */
-  }
-  
-  .navbar-title-link:hover {
-    color: #ffa500; /* Color al pasar el mouse */
-  }
-  
+.navbar-title {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #ffa500;
+  text-align: left;
+}
+
+.navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-links li {
+  margin-bottom: 15px;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.navbar-links li a:hover {
+  color: #ffa500;
+}
+
+.navbar-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-title-link:hover {
+  color: #ffa500;
+}
+
+/* Estilos para el usuario */
+.navbar-user {
+  margin-top: auto; /* Empuja el contenido hacia arriba */
+  text-align: left;
+}
+
+.navbar-user span {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffa500;
+  font-weight: bold;
+}
+
+.logout-button {
+  padding: 10px 15px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.logout-button:hover {
+  background-color: #e03e3e;
+}

@@ -11,6 +11,7 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
   const [teams, setTeams] = useState([]); // Estado para almacenar los equipos
+  const [tournaments, setTournaments] = useState([]); // Estado para almacenar los torneos
 
   // Cargar el usuario almacenado en localStorage al iniciar la aplicación
   useEffect(() => {
@@ -37,26 +38,25 @@ function App() {
       prevTeams.map((team) =>
         team.teamName === teamName
           ? {
-            ...team,
-            players: [...team.players, { playerName, position }],
-          }
+              ...team,
+              players: [...team.players, { playerName, position }],
+            }
           : team
       )
     );
   };
 
-    // Función para agregar torneos
-    const addTournament = (tournament) => {
-      console.log("Nuevo torneo agregado:", tournament);
-      // Lógica para guardar o manejar torneos
-    };
-  
-    // Función para agregar liguillas (round robin)
-    const addRoundRobin = (roundRobin) => {
-      console.log("Nueva liguilla agregada:", roundRobin);
-      // Lógica para guardar o manejar liguillas
-    };
-  
+  // Función para agregar torneos
+  const addTournament = (tournament) => {
+    setTournaments([...tournaments, tournament]);
+    console.log('Nuevo torneo agregado:', tournament);
+  };
+
+  // Función para agregar liguillas (round robin)
+  const addRoundRobin = (roundRobin) => {
+    console.log('Nueva liguilla agregada:', roundRobin);
+    // Puedes agregar lógica aquí si necesitas guardar las liguillas
+  };
 
   // Función para eliminar un equipo
   const removeTeam = (index) => {
@@ -68,21 +68,11 @@ function App() {
       <div className="app">
         {user ? (
           <>
-            {/* Navbar */}
-            <Navbar />
+            {/* Navbar con usuario y logout */}
+            <Navbar user={user} handleLogout={handleLogout} />
 
             {/* Contenedor principal */}
             <div className="content">
-              {/* Header */}
-              <header className="header">
-                <div className="user-icon">
-                  <span>👤</span>
-                  <button className="logout-button" onClick={handleLogout}>
-                    Cerrar Sesión
-                  </button>
-                </div>
-              </header>
-
               {/* Contenido principal */}
               <main className="main">
                 <Routes>
@@ -102,6 +92,7 @@ function App() {
                     element={
                       <Torneos
                         teams={teams}
+                        tournaments={tournaments}
                         addTournament={addTournament}
                         addRoundRobin={addRoundRobin}
                       />

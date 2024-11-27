@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-function Navbar() {
+function Navbar({ user, handleLogout }) {
   return (
     <div className="navbar">
       <Link to="/" className="navbar-title-link">
@@ -22,6 +22,16 @@ function Navbar() {
           <Link to="/sedes">Sedes</Link>
         </li>
       </ul>
+
+      {/* Usuario abajo a la izquierda */}
+      {user && (
+        <div className="navbar-user">
+          <span>👤 {user.username}</span>
+          <button className="logout-button" onClick={handleLogout}>
+            Cerrar Sesión
+          </button>
+        </div>
+      )}
     </div>
   );
 }
