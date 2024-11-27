@@ -1,20 +1,18 @@
 /* Navbar actualizado */
 .navbar {
-    background-color: #1c1c1c;
-    color: white;
-    width: 250px;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    position: fixed; /* Fijo a la izquierda */
-    top: 0;
-    left: 0;
-  }
+  background-color: #1c1c1c;
+  color: white;
+  width: 250px;
+  min-height: 100vh; /* Asegura que ocupe al menos la altura de la pantalla */
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto; /* Habilitar scroll interno si es necesario */
   
-  .navbar-title {
+} 
+ .navbar-title {
     font-size: 1.8em;
     margin-bottom: 20px;
     color: #ffa500;
@@ -45,5 +43,14 @@
   .navbar-links li.active a {
     font-weight: bold;
     color: #ffa500;
+  }
+
+  .navbar-title-link {
+    text-decoration: none;
+    color: inherit; /* Usa el color del contenedor padre */
+  }
+  
+  .navbar-title-link:hover {
+    color: #ffa500; /* Color al pasar el mouse */
   }
   

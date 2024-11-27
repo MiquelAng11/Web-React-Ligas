@@ -3,7 +3,7 @@ import Tournament from '../components/Tournament';
 
 function Torneos({ teams, addTournament, addRoundRobin }) {
   return (
-    <div className="main">
+    <div className="body">
       <h1>Torneos</h1>
       <Tournament 
         teams={teams}

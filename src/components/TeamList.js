@@ -1,21 +1,22 @@
 import React from 'react';
+import '../styles/TeamForm.css'; // Usamos el mismo archivo CSS para TeamList
 
 function TeamList({ teams, removeTeam }) {
   return (
-    <ul>
-      {teams && teams.length > 0 ? (
-        teams.map((team, index) => (
-          <li key={index}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div className="team-list-container">
+      <ul>
+        {teams && teams.length > 0 ? (
+          teams.map((team, index) => (
+            <li key={index}>
               <span>{team.teamName}</span>
               <button onClick={() => removeTeam(index)}>❌</button>
-            </div>
-          </li>
-        ))
-      ) : (
-        <p>No hay equipos disponibles</p>
-      )}
-    </ul>
+            </li>
+          ))
+        ) : (
+          <p>No hay equipos disponibles</p>
+        )}
+      </ul>
+    </div>
   );
 }
 

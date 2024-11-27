@@ -5,7 +5,9 @@ import '../styles/Navbar.css';
 function Navbar() {
   return (
     <div className="navbar">
-      <h2 className="navbar-title">Menú</h2>
+      <Link to="/" className="navbar-title-link">
+        <h2 className="navbar-title">Menú</h2>
+      </Link>
       <ul className="navbar-links">
         <li>
           <Link to="/jugadores">Jugadores</Link>

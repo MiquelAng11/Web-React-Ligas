@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/TeamForm.css'; // Importamos los estilos
 
 function TeamForm({ addTeam, addPlayerToTeam, teams }) {
   const [teamName, setTeamName] = useState('');
@@ -24,7 +25,7 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
   };
 
   return (
-    <div>
+    <div className="team-form-container">
       <form onSubmit={handleTeamSubmit}>
         <label>Nombre del Equipo:</label>
         <input
@@ -63,9 +64,9 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
           required
         />
         <label>Posición:</label>
-        <select 
-          value={position} 
-          onChange={(e) => setPosition(e.target.value)} 
+        <select
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
           required
         >
           <option value="Portero">Portero</option>

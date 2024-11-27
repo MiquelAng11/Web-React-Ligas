@@ -11,6 +11,7 @@ import './App.css';
 function App() {
   const [user, setUser] = useState(null);
 
+  // Cargar el usuario almacenado en localStorage al iniciar la aplicación
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('currentUser'));
     if (storedUser) {
@@ -18,6 +19,7 @@ function App() {
     }
   }, []);
 
+  // Manejar cierre de sesión
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
     setUser(null);
@@ -28,25 +30,36 @@ function App() {
       <div className="app">
         {user ? (
           <>
+            {/* Navbar fijo */}
             <Navbar />
+
+            {/* Contenedor principal */}
             <div className="content">
-              <div className="header">
+              {/* Header */}
+              <header className="header">
                 <div className="user-icon">
                   <span>👤</span>
-                  <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
+                  <button className="logout-button" onClick={handleLogout}>
+                    Cerrar Sesión
+                  </button>
                 </div>
-              </div>
-              <Routes>
-                <Route path="/equipos" element={<Equipos />} />
-                <Route path="/torneos" element={<Torneos />} />
-                <Route path="/jugadores" element={<Jugadores />} />
-                <Route path="/settings" element={<UserSettings />} />
-                <Route path="/" element={<div className="main"><h1>Bienvenido</h1></div>} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </Routes>
+              </header>
+
+              {/* Contenido principal */}
+              <main className="main">
+                <Routes>
+                  <Route path="/equipos" element={<Equipos />} />
+                  <Route path="/torneos" element={<Torneos />} />
+                  <Route path="/jugadores" element={<Jugadores />} />
+                  <Route path="/settings" element={<UserSettings />} />
+                  <Route path="/" element={<h1>Bienvenido</h1>} />
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+              </main>
             </div>
           </>
         ) : (
+          // Redirigir a Login si no está autenticado
           <Routes>
             <Route path="*" element={<LoginForm setUser={setUser} />} />
           </Routes>
