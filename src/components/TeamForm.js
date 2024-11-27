@@ -45,7 +45,9 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
           onChange={(e) => setSelectedTeam(e.target.value)}
           required
         >
-          <option value="" disabled>Selecciona un equipo</option>
+          <option value="" disabled>
+            Selecciona un equipo
+          </option>
           {teams && teams.length > 0 ? (
             teams.map((team, index) => (
               <option key={index} value={team.teamName}>
@@ -53,7 +55,9 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
               </option>
             ))
           ) : (
-            <option value="" disabled>No hay equipos disponibles</option>
+            <option value="" disabled>
+              No hay equipos disponibles
+            </option>
           )}
         </select>
         <label>Nombre del Jugador:</label>

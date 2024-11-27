@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/TeamForm.css'; // Usamos el mismo archivo CSS para TeamList
 
 function TeamList({ teams, removeTeam }) {
   return (

@@ -1,29 +1,20 @@
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: #121212;
-    color: #f0f0f0;
-    overflow: hidden; /* Elimina scroll innecesario */
-  }
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #121212; /* Fondo oscuro general */
+}
 
-  /* Asegurar que root y app también ocupen todo el espacio */
-  #root {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-
-  .app {
-    display: flex;
-    flex-direction: row; /* Alinear navbar y contenido horizontalmente */
-    width: 100%;
-    height: 100%;
-  }
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ocupa toda la altura del contenedor padre */
+  width: 100%; /* Ocupa todo el ancho del contenedor padre */
+}
 
   /* Navbar */
   .navbar {

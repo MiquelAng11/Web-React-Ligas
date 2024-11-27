@@ -6,15 +6,12 @@ function Equipos({ teams, addTeam, addPlayerToTeam, removeTeam }) {
   return (
     <div className="body">
       <h1 style={{ color: '#ffa500' }}>Equipos</h1>
-      <TeamForm 
-        addTeam={addTeam} 
-        addPlayerToTeam={addPlayerToTeam} 
-        teams={teams} 
+      <TeamForm
+        addTeam={addTeam}
+        addPlayerToTeam={addPlayerToTeam}
+        teams={teams}
       />
-      <TeamList 
-        teams={teams} 
-        removeTeam={removeTeam} 
-      />
+      <TeamList teams={teams} removeTeam={removeTeam} />
     </div>
   );
 }
