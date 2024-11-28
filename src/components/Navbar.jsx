@@ -5,10 +5,11 @@ import '../styles/Navbar.css';
 function Navbar({ user, handleLogout }) {
   return (
     <div className="navbar">
-      <Link to="/" className="navbar-title-link">
         <h2 className="navbar-title">Menú</h2>
-      </Link>
       <ul className="navbar-links">
+       <li>
+          <Link to="/">Inicio</Link>
+        </li>
         <li>
           <Link to="/jugadores">Jugadores</Link>
         </li>

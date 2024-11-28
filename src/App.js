@@ -6,6 +6,7 @@ import Torneos from './pages/torneos';
 import Jugadores from './pages/jugadores';
 import UserSettings from './pages/userSettings';
 import Navbar from './components/Navbar';
+import Inicio from './pages/inicio';
 import './App.css';
 
 function App() {
@@ -100,7 +101,7 @@ function App() {
                   />
                   <Route path="/jugadores" element={<Jugadores teams={teams} />} />
                   <Route path="/settings" element={<UserSettings />} />
-                  <Route path="/" element={<h1>Bienvenido</h1>} />
+                  <Route path="/" element={<Inicio user={user} />} />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>

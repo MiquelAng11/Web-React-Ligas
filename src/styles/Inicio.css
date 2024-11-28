@@ -1,0 +1,48 @@
+.inicio-container {
+    text-align: center;
+    color: #f0f0f0;
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 900px;
+  }
+  
+  .inicio-titulo {
+    font-size: 2.5rem;
+    color: #ffa500;
+    margin-bottom: 20px;
+  }
+  
+  .inicio-descripcion {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  
+  .inicio-secciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .inicio-seccion {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: calc(33.333% - 20px);
+    min-width: 250px;
+    flex-grow: 1;
+  }
+  
+  .inicio-seccion h2 {
+    color: #ffa500;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .inicio-seccion p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
