@@ -53,4 +53,26 @@
     font-size: 1rem;
     line-height: 1.5;
   }
+  @media (max-width: 480px) {
+    .inicio-titulo {
+      font-size: 1.8rem; /* Título más pequeño */
+    }
+  
+    .inicio-descripcion {
+      font-size: 0.9rem; /* Descripción más pequeña */
+    }
+  
+    .inicio-seccion {
+      padding: 15px; /* Reducir padding */
+      font-size: 0.9rem; /* Reducir tamaño del texto */
+    }
+  
+    .inicio-seccion h2 {
+      font-size: 1.2rem; /* Reducir tamaño del subtítulo */
+    }
+  
+    .inicio-seccion p {
+      font-size: 0.8rem; /* Reducir tamaño del texto */
+    }
+  }
   
