@@ -1,21 +1,35 @@
+// components/Tournament.js
 import React, { useState } from 'react';
-import '../styles/TournamentForm.css'; // Importamos el CSS actualizado
+import '../styles/TournamentForm.css';
 
-function Tournament({ teams = [], addTournament, addRoundRobin }) {
+function Tournament({ teams = [], addTournament, addRoundRobin, sedes = [] }) {
   const [tournamentName, setTournamentName] = useState('');
   const [tournamentDate, setTournamentDate] = useState('');
+  const [tournamentSede, setTournamentSede] = useState('');
+
   const [roundRobinName, setRoundRobinName] = useState('');
   const [roundRobinDate, setRoundRobinDate] = useState('');
+  const [roundRobinSede, setRoundRobinSede] = useState('');
 
   const handleCreateTournament = () => {
     if (teams.length < 2) {
       alert('Se necesitan al menos 2 equipos para crear un torneo.');
       return;
     }
-    const rounds = [];
-    addTournament?.({ name: tournamentName, date: tournamentDate, rounds });
+    if (!tournamentSede) {
+      alert('Por favor, selecciona una sede para el torneo.');
+      return;
+    }
+    const tournament = {
+      name: tournamentName,
+      date: tournamentDate,
+      sedeName: tournamentSede,
+      rounds: [],
+    };
+    addTournament?.(tournament);
     setTournamentName('');
     setTournamentDate('');
+    setTournamentSede('');
   };
 
   const handleCreateRoundRobin = () => {
@@ -23,10 +37,20 @@ function Tournament({ teams = [], addTournament, addRoundRobin }) {
       alert('Se necesitan al menos 2 equipos para crear una liguilla.');
       return;
     }
-    const matches = [];
-    addRoundRobin?.({ name: roundRobinName, date: roundRobinDate, matches });
+    if (!roundRobinSede) {
+      alert('Por favor, selecciona una sede para la liguilla.');
+      return;
+    }
+    const liguilla = {
+      name: roundRobinName,
+      date: roundRobinDate,
+      sedeName: roundRobinSede,
+      matches: [],
+    };
+    addRoundRobin?.(liguilla);
     setRoundRobinName('');
     setRoundRobinDate('');
+    setRoundRobinSede('');
   };
 
   return (
@@ -44,6 +68,20 @@ function Tournament({ teams = [], addTournament, addRoundRobin }) {
         value={tournamentDate}
         onChange={(e) => setTournamentDate(e.target.value)}
       />
+      <label>Sede del Torneo:</label>
+      <select
+        value={tournamentSede}
+        onChange={(e) => setTournamentSede(e.target.value)}
+      >
+        <option value="" disabled>
+          Selecciona una sede
+        </option>
+        {sedes.map((sede, index) => (
+          <option key={index} value={sede.sedeName}>
+            {sede.sedeName} - {sede.address}
+          </option>
+        ))}
+      </select>
       <button onClick={handleCreateTournament}>Crear Torneo</button>
 
       <h2>Crear Liguilla</h2>
@@ -59,6 +97,20 @@ function Tournament({ teams = [], addTournament, addRoundRobin }) {
         value={roundRobinDate}
         onChange={(e) => setRoundRobinDate(e.target.value)}
       />
+      <label>Sede de la Liguilla:</label>
+      <select
+        value={roundRobinSede}
+        onChange={(e) => setRoundRobinSede(e.target.value)}
+      >
+        <option value="" disabled>
+          Selecciona una sede
+        </option>
+        {sedes.map((sede, index) => (
+          <option key={index} value={sede.sedeName}>
+            {sede.sedeName} - {sede.address}
+          </option>
+        ))}
+      </select>
       <button onClick={handleCreateRoundRobin}>Crear Liguilla</button>
     </div>
   );

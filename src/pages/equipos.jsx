@@ -1,6 +1,5 @@
 import React from 'react';
 import TeamForm from '../components/TeamForm';
-import TeamList from '../components/TeamList';
 
 function Equipos({ teams, addTeam, addPlayerToTeam, removeTeam }) {
   return (

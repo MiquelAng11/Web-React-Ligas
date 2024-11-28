@@ -1,3 +1,4 @@
+// pages/inicio.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Inicio.css';
@@ -26,6 +27,13 @@ function Inicio({ user }) {
           <h2>👥 Jugadores</h2>
           <p>
             Consulta y organiza a los jugadores de tus equipos con facilidad.
+          </p>
+        </Link>
+        {/* New Sedes Section */}
+        <Link to="/sedes" className="inicio-seccion">
+          <h2>📍 Sedes</h2>
+          <p>
+            Añade y administra las sedes donde se llevarán a cabo los torneos y liguillas.
           </p>
         </Link>
       </div>
