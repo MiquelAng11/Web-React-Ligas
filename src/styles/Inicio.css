@@ -39,7 +39,7 @@
   }
   
   .inicio-seccion:hover {
-    transform: scale(1.05); /* Aumentar tamaño */
+    transform: scale(1.025); /* Aumentar tamaño */
     background-color: #3a3a3a; /* Cambiar color de fondo */
   }
   
