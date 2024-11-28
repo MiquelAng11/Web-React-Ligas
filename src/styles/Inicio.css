@@ -33,6 +33,14 @@
     width: calc(33.333% - 20px);
     min-width: 250px;
     flex-grow: 1;
+    text-decoration: none; /* Eliminar subrayado */
+    color: #f0f0f0; /* Color del texto */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .inicio-seccion:hover {
+    transform: scale(1.05); /* Aumentar tamaño */
+    background-color: #3a3a3a; /* Cambiar color de fondo */
   }
   
   .inicio-seccion h2 {
