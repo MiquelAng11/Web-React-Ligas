@@ -1,9 +1,11 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import Equipos from './pages/equipos';
 import Torneos from './pages/torneos';
 import Jugadores from './pages/jugadores';
+import Sedes from './pages/sedes';
 import UserSettings from './pages/userSettings';
 import Navbar from './components/Navbar';
 import Inicio from './pages/inicio';
@@ -11,10 +13,11 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
-  const [teams, setTeams] = useState([]); // Estado para almacenar los equipos
-  const [tournaments, setTournaments] = useState([]); // Estado para almacenar los torneos
+  const [teams, setTeams] = useState([]);
+  const [tournaments, setTournaments] = useState([]);
+  const [liguillas, setLiguillas] = useState([]); // New state for liguillas
+  const [sedes, setSedes] = useState([]);
 
-  // Cargar el usuario almacenado en localStorage al iniciar la aplicación
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('currentUser'));
     if (storedUser) {
@@ -22,18 +25,17 @@ function App() {
     }
   }, []);
 
-  // Manejar cierre de sesión
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
     setUser(null);
   };
 
-  // Función para agregar un equipo
+  // Function to add a team
   const addTeam = (teamName) => {
     setTeams([...teams, { teamName, players: [] }]);
   };
 
-  // Función para agregar un jugador a un equipo
+  // Function to add a player to a team
   const addPlayerToTeam = (teamName, playerName, position) => {
     setTeams((prevTeams) =>
       prevTeams.map((team) =>
@@ -47,75 +49,95 @@ function App() {
     );
   };
 
-  // Función para agregar torneos
-  const addTournament = (tournament) => {
-    setTournaments([...tournaments, tournament]);
-    console.log('Nuevo torneo agregado:', tournament);
-  };
-
-  // Función para agregar liguillas (round robin)
-  const addRoundRobin = (roundRobin) => {
-    console.log('Nueva liguilla agregada:', roundRobin);
-    // Puedes agregar lógica aquí si necesitas guardar las liguillas
-  };
-
-  // Función para eliminar un equipo
+  // Function to remove a team
   const removeTeam = (index) => {
     setTeams((prevTeams) => prevTeams.filter((_, i) => i !== index));
   };
 
-  return (
-    <Router>
-      <div className="app">
-        {user ? (
-          <>
-            {/* Navbar con usuario y logout */}
-            <Navbar user={user} handleLogout={handleLogout} />
-
-            {/* Contenedor principal */}
-            <div className="content">
-              {/* Contenido principal */}
-              <main className="main">
-                <Routes>
-                  <Route
-                    path="/equipos"
-                    element={
-                      <Equipos
-                        teams={teams}
-                        addTeam={addTeam}
-                        addPlayerToTeam={addPlayerToTeam}
-                        removeTeam={removeTeam}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/torneos"
-                    element={
-                      <Torneos
-                        teams={teams}
-                        tournaments={tournaments}
-                        addTournament={addTournament}
-                        addRoundRobin={addRoundRobin}
-                      />
-                    }
-                  />
-                  <Route path="/jugadores" element={<Jugadores teams={teams} />} />
-                  <Route path="/settings" element={<UserSettings />} />
-                  <Route path="/" element={<Inicio user={user} />} />
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-              </main>
-            </div>
-          </>
-        ) : (
-          // Redirigir a Login si no está autenticado
-          <Routes>
-            <Route path="*" element={<LoginForm setUser={setUser} />} />
-          </Routes>
-        )}
-      </div>
-    </Router>
-  );
-}
-
-export default App;
+    // Function to add a tournament
+    const addTournament = (tournament) => {
+      setTournaments([...tournaments, tournament]);
+      console.log('Nuevo torneo agregado:', tournament);
+    };
+  
+    // Function to add a liguilla
+    const addRoundRobin = (liguilla) => {
+      setLiguillas([...liguillas, liguilla]);
+      console.log('Nueva liguilla agregada:', liguilla);
+    };
+  
+    // Function to add a sede
+    const addSede = (sedeName, address) => {
+      setSedes([...sedes, { sedeName, address }]);
+    };
+  
+    // Function to remove a sede
+    const removeSede = (index) => {
+      setSedes((prevSedes) => prevSedes.filter((_, i) => i !== index));
+    };
+  
+    return (
+      <Router>
+        <div className="app">
+          {user ? (
+            <>
+              <Navbar user={user} handleLogout={handleLogout} />
+              <div className="content">
+                <main className="main">
+                  <Routes>
+                    <Route
+                      path="/equipos"
+                      element={
+                        <Equipos
+                          teams={teams}
+                          addTeam={addTeam}
+                          addPlayerToTeam={addPlayerToTeam}
+                          removeTeam={removeTeam}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/torneos"
+                      element={
+                        <Torneos
+                          teams={teams}
+                          tournaments={tournaments}
+                          liguillas={liguillas}
+                          addTournament={addTournament}
+                          addRoundRobin={addRoundRobin}
+                          sedes={sedes}
+                        />
+                      }
+                    />
+                    <Route
+                      path="/jugadores"
+                      element={<Jugadores teams={teams} />}
+                    />
+                    <Route
+                      path="/sedes"
+                      element={
+                        <Sedes
+                          sedes={sedes}
+                          addSede={addSede}
+                          removeSede={removeSede}
+                        />
+                      }
+                    />
+                    <Route path="/settings" element={<UserSettings />} />
+                    <Route path="/" element={<Inicio user={user} />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                  </Routes>
+                </main>
+              </div>
+            </>
+          ) : (
+            <Routes>
+              <Route path="*" element={<LoginForm setUser={setUser} />} />
+            </Routes>
+          )}
+        </div>
+      </Router>
+    );
+  }
+  
+  export default App;
