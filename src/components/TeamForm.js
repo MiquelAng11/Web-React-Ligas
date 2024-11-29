@@ -1,5 +1,7 @@
+// components/TeamForm.js
+
 import React, { useState } from 'react';
-import '../styles/TeamForm.css'; // Importamos los estilos actualizados
+import '../styles/TeamForm.css';
 
 function TeamForm({ addTeam, addPlayerToTeam, teams }) {
   const [teamName, setTeamName] = useState('');
@@ -52,8 +54,8 @@ function TeamForm({ addTeam, addPlayerToTeam, teams }) {
             <option value="" disabled>
               Selecciona un equipo
             </option>
-            {teams.map((team, index) => (
-              <option key={index} value={team.teamName}>
+            {teams.map((team) => (
+              <option key={team._id} value={team.teamName}>
                 {team.teamName}
               </option>
             ))}

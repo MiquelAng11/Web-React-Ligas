@@ -1,24 +1,37 @@
-// components/LoginForm.js
+// src/components/LoginForm.js
+
 import React, { useState } from 'react';
-import '../styles/Login.css'; // Asegúrate de importar el CSS
+import axios from 'axios'; // Make sure to import axios if you're using it
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import '../styles/Login.css'; // Import your CSS for styling
 
 function LoginForm({ setUser }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { username };
-    localStorage.setItem('currentUser', JSON.stringify(user));
-    setUser(user);
+    try {
+      const response = await axios.post('/api/auth/login', {
+        username,
+        password,
+      });
+      const userData = response.data;
+      localStorage.setItem('currentUser', JSON.stringify(userData));
+      axios.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`;
+      setUser(userData);
+    } catch (error) {
+      console.error('Login error:', error.response?.data || error.message);
+      alert(error.response?.data?.error || 'Error al iniciar sesión');
+    }
   };
 
   return (
-    
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
+        <h2>Iniciar Sesión</h2>
         <div>
-          <label>Username:</label>
+          <label>Nombre de Usuario:</label>
           <input
             type="text"
             value={username}
@@ -27,7 +40,7 @@ function LoginForm({ setUser }) {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label>Contraseña:</label>
           <input
             type="password"
             value={password}
@@ -35,7 +48,10 @@ function LoginForm({ setUser }) {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Iniciar Sesión</button>
+        <p>
+          ¿No tienes una cuenta? <Link to="/register">Regístrate aquí</Link>
+        </p>
       </form>
     </div>
   );

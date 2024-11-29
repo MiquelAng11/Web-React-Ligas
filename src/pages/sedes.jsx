@@ -1,26 +1,25 @@
 // pages/sedes.js
-import React, { useState } from 'react';
-import '../styles/Sedes.css'; // Create a CSS file for Sedes if needed
+
+import React, { useState, useEffect } from 'react';
+import '../styles/Sedes.css';
 
 function Sedes({ sedes, addSede, removeSede }) {
   const [sedeName, setSedeName] = useState('');
   const [address, setAddress] = useState('');
-
-  const handleSedeSubmit = (e) => {
-    e.preventDefault();
-    if (sedeName && address) {
-      addSede(sedeName, address);
-      setSedeName('');
-      setAddress('');
-    }
-  };
 
   return (
     <div className="sedes-container">
       <h1 className="sedes-title" style={{ color: '#ffa500', textAlign: 'center' }}>Sedes</h1>
       <div className="sede-form-container">
         <h2>Agregar Sede</h2>
-        <form onSubmit={handleSedeSubmit}>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          if (sedeName && address) {
+            addSede(sedeName, address);
+            setSedeName('');
+            setAddress('');
+          }
+        }}>
           <label>Nombre de la Sede:</label>
           <input
             type="text"
@@ -42,12 +41,12 @@ function Sedes({ sedes, addSede, removeSede }) {
         <h2>Lista de Sedes</h2>
         {sedes.length > 0 ? (
           <ul>
-            {sedes.map((sede, index) => (
-              <li key={index}>
+            {sedes.map((sede) => (
+              <li key={sede._id}>
                 <div>
                   <strong>{sede.sedeName}</strong> - {sede.address}
                 </div>
-                <button onClick={() => removeSede(index)}>Eliminar</button>
+                <button onClick={() => removeSede(sede.sedeName)}>Eliminar</button>
               </li>
             ))}
           </ul>

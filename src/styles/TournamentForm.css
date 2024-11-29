@@ -1,7 +1,9 @@
+/* src/styles/Torneos.css */
+
 .tournament-form-container {
-  margin: 0 auto; /* Centrado */
+  margin: 0 auto;
   padding: 20px;
-  width: 62.5vh; /* Llenar el contenedor */
+  width: 62.5vh;
   border-radius: 10px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
   background-color: #2c2c2c;
@@ -13,7 +15,7 @@
   margin-bottom: 20px;
   font-size: 1.5em;
   font-weight: bold;
-  color: #ffa500; /* Resaltar encabezado */
+  color: #ffa500;
   text-align: center;
 }
 
@@ -27,7 +29,7 @@
 
 .tournament-form-container input,
 .tournament-form-container select {
-  width: 100%; /* Llenar el contenedor */
+  width: 100%;
   padding: 12px;
   margin-bottom: 15px;
   border: 1px solid #555;
@@ -35,7 +37,7 @@
   font-size: 1em;
   background-color: #404040;
   color: #f0f0f0;
-  box-sizing: border-box; /* Evitar desbordamiento */
+  box-sizing: border-box;
 }
 
 .tournament-form-container input:focus,
@@ -48,7 +50,7 @@
 .tournament-form-container button {
   padding: 12px 20px;
   margin-top: 10px;
-  display: block; /* Asegura que sea un bloque */
+  display: block;
   margin-left: auto;
   margin-right: auto;
   background-color: #ffa500;
@@ -66,7 +68,8 @@
   transform: scale(1.05);
 }
 
-.tournaments-list, .liguillas-list {
+.tournaments-list,
+.liguillas-list {
   margin: 20px auto;
   padding: 20px;
   max-width: 500px;
@@ -76,23 +79,180 @@
   color: #f0f0f0;
 }
 
-.tournaments-list h2, .liguillas-list h2 {
+.tournaments-list h2,
+.liguillas-list h2 {
   color: #ffa500;
   font-size: 1.5em;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.tournaments-list ul, .liguillas-list ul {
+.tournaments-list ul,
+.liguillas-list ul {
   list-style: none;
   padding: 0;
 }
 
-.tournaments-list li, .liguillas-list li {
+.tournaments-list li,
+.liguillas-list li {
   margin-bottom: 10px;
   padding: 10px;
   background-color: #404040;
   border-radius: 5px;
   font-size: 1em;
   color: #f0f0f0;
+}
+/* Styles for the links in the tournaments and liguillas lists */
+.tournaments-list ul li a,
+.liguillas-list ul li a {
+  color: #f0f0f0;           /* Set link color to white */
+  text-decoration: none;    /* Remove underline */
+  display: block;           /* Make the entire list item clickable */
+  padding: 10px;            /* Add padding for better click area */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.tournaments-list ul li a:hover,
+.liguillas-list ul li a:hover {
+  background-color: #ffa500; /* Change background color on hover */
+  color: #2c2c2c;            /* Change text color on hover */
+}
+
+/* ... existing styles ... */
+
+/* Styles for Tournament and Liguilla Details */
+
+.tournament-details-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  color: #f0f0f0;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tournament-details-title {
+  color: #ffa500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tournament-details h2 {
+  color: #ffa500;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.matches-list {
+  list-style: none;
+  padding: 0;
+}
+
+.match-item {
+  background-color: #404040;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+/* src/styles/Torneos.css */
+
+/* ... existing styles ... */
+
+/* Styles for Tournament and Liguilla Details */
+
+.tournament-details-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  background-color: #2c2c2c; /* Same color as other containers */
+  border-radius: 10px;
+  color: #f0f0f0;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tournament-details-title {
+  color: #f0f0f0; /* Set title color to white */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tournament-details p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tournament-details h2 {
+  color: #ffa500; /* Subtitles in orange */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.matches-list {
+  list-style: none;
+  padding: 0;
+}
+
+.match-item {
+  background-color: #404040;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.match-item p {
+  margin: 5px 0;
+}
+
+.match-item strong {
+  color: #ffa500;
+}
+/* ... existing styles ... */
+
+/* Styles for Tournament and Liguilla Details */
+
+.tournament-details-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 700px;
+  background-color: #2c2c2c; /* Same color as other containers */
+  border-radius: 10px;
+  color: #f0f0f0;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tournament-details-title {
+  color: #f0f0f0; /* Title in white */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tournament-details-container p {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.tournament-details h2 {
+  color: #ffa500; /* Subtitles in orange */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.matches-list {
+  list-style: none;
+  padding: 0;
+}
+
+.match-item {
+  background-color: #404040;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.match-item p {
+  margin: 0;
 }
