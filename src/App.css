@@ -26,37 +26,25 @@ body,
   background-color: #1c1c1c;
   color: white;
   width: 250px;
-  /* Ancho fijo para el navbar */
   height: 100vh;
-  /* Ocupa toda la altura */
   position: fixed;
-  /* Fijo en la parte izquierda */
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
-  /* Incluye padding en el cálculo del tamaño */
+  z-index: 999; /* Mantener el navbar por encima si es visible */
 }
-
 /* Contenedor principal */
 .content {
-  margin-left: 250px;
-  /* Deja espacio para el navbar */
+  margin-left: 250px; /* Espacio para el navbar de escritorio */
   width: calc(100% - 250px);
-  /* El resto del espacio después del navbar */
   height: 100vh;
-  /* Ocupa toda la altura */
   background-color: #1e1e1e;
-  /* Fondo gris oscuro */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  /* Asegurar que los hijos ocupen todo el ancho */
   overflow-y: auto;
-  /* Habilitar scroll vertical si es necesario */
   box-sizing: border-box;
 }
 
@@ -124,4 +112,16 @@ ul li button {
 
 ul li button:hover {
   background-color: #e03e3e;
+}
+
+/* Ocultar el navbar en móviles y ajustar el contenido */
+@media (max-width: 768px) {
+  .navbar {
+    display: none; /* Ocultar el navbar de escritorio */
+  }
+
+  .content {
+    margin-left: 0; /* Eliminar margen en móviles */
+    width: 100%; /* Ocupa el ancho completo */
+  }
 }

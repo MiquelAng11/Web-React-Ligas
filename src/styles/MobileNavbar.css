@@ -1,0 +1,113 @@
+/* Estilos base */
+.mobile-navbar {
+    display: none; /* Oculto por defecto en pantallas grandes */
+  }
+  
+  /* Botón hamburguesa */
+  .hamburger-button {
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+  }
+  
+  /* Menú desplegable */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Oculto fuera del viewport inicialmente */
+    width: 250px;
+    height: 100%;
+    background-color: #1c1c1c;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease-in-out; /* Animación de entrada/salida */
+    z-index: 999;
+    padding-top: 70px; /* Espacio para el botón hamburguesa */
+  }
+  
+  .mobile-menu.open {
+    left: 0; /* Muestra el menú */
+  }
+  
+  /* Estilos de los enlaces */
+  .mobile-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 14%;
+  }
+  
+  .mobile-links li {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .mobile-links a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+  }
+  
+  .mobile-links a:hover {
+    color: #ffa500;
+  }
+  
+  /* Información del usuario */
+  .mobile-user {
+    margin-top: auto;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #333; /* Separador visual */
+  }
+  
+  .mobile-username {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffa500;
+    font-weight: bold;
+  }
+  
+  .mobile-logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80%; /* Botón más estrecho */
+    margin: 0 auto; /* Centrado */
+    text-align: center;
+  }
+  
+  .mobile-logout-button:hover {
+    background-color: #e03e3e;
+  }
+  
+  /* Ocultar el navbar de escritorio en móviles */
+  @media (max-width: 768px) {
+    .mobile-navbar {
+      display: block; /* Mostrar navbar móvil */
+    }
+  
+    .navbar {
+      display: none; /* Ocultar navbar de escritorio */
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .mobile-navbar {
+      display: none;
+    }
+  }
+  

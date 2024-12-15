@@ -59,3 +59,22 @@
     color: #f0f0f0;
     text-align: center;
 }
+
+@media (max-width: 480px) {
+    .team-card {
+        flex: 1 1 calc(100% - 20px); 
+        max-width: calc(100% - 20px);
+    }
+
+    .jugadores-title {
+        font-size: 1.3em; 
+    }
+
+    .team-name {
+        font-size: 1.2em;
+    }
+
+    .player-item {
+        font-size: 1em; 
+    }
+}

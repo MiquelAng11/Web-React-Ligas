@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Jugadores.css'; // Importamos el CSS
+import '../styles/Jugadores.css'; 
 
 function Jugadores({ teams }) {
   return (

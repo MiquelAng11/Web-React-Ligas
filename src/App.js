@@ -10,6 +10,7 @@ import UserSettings from './pages/userSettings';
 import Navbar from './components/Navbar';
 import Inicio from './pages/inicio';
 import './App.css';
+import MobileNavbar from './components/MobileNavbar';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -81,6 +82,7 @@ function App() {
         <div className="app">
           {user ? (
             <>
+              <MobileNavbar user={user} handleLogout={handleLogout} />
               <Navbar user={user} handleLogout={handleLogout} />
               <div className="content">
                 <main className="main">
