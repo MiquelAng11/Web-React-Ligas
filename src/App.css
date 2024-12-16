@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+
 html,
 body,
 #root {
@@ -9,6 +13,29 @@ body,
   flex-direction: column;
   background-color: #121212;
   /* Fondo oscuro general */
+
+  letter-spacing: 1px; /* Espaciado ligero para mejor apariencia */
+}
+
+h1, h2, h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase; /* Mayúsculas para efecto deportivo */
+  letter-spacing: 2px; /* Mayor espaciado */
+  color: #ffa500; /* Color naranja ya usado */
+  margin: 20px 0; /* Espaciado */
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #f0f0f0; /* Gris claro para mejor lectura */
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  color: #f0f0f0; /* Gris claro para mejor lectura */
 }
 
 .app {
@@ -108,6 +135,10 @@ ul li button {
   border-radius: 5px;
   color: #fff;
   font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #f0f0f0; /* Gris claro para mejor lectura */
 }
 
 ul li button:hover {

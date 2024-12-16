@@ -33,6 +33,9 @@
   text-decoration: none;
   font-size: 1.2em;
   transition: color 0.3s;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #f0f0f0; /* Gris claro para mejor lectura */
 }
 
 .navbar-links li a:hover {

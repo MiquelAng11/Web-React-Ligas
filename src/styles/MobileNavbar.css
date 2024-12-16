@@ -57,6 +57,9 @@
     color: white;
     font-size: 1.2em;
     transition: color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #f0f0f0; 
   }
   
   .mobile-links a:hover {
