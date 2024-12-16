@@ -15,10 +15,10 @@ function Navbar({ user, handleLogout }) {
           <Link to="/jugadores">Jugadores</Link>
         </li>
         <li>
-          <Link to="/torneos">Torneos</Link>
+          <Link to="/equipos">Equipos</Link>
         </li>
         <li>
-          <Link to="/equipos">Equipos</Link>
+          <Link to="/torneos">Torneos</Link>
         </li>
         <li>
           <Link to="/sedes">Sedes</Link>

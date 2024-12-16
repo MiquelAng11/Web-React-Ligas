@@ -30,13 +30,13 @@ function MobileNavbar({ user, handleLogout }) {
             </Link>
           </li>
           <li>
-            <Link to="/torneos" onClick={toggleMenu}>
-              Torneos
+            <Link to="/equipos" onClick={toggleMenu}>
+              Equipos
             </Link>
           </li>
           <li>
-            <Link to="/equipos" onClick={toggleMenu}>
-              Equipos
+            <Link to="/torneos" onClick={toggleMenu}>
+              Torneos
             </Link>
           </li>
           <li>
