@@ -20,15 +20,24 @@ function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, 
             No hay torneos creados
           </p>
         ) : (
-          <ul>
+          <div className="tournament-cards">
             {tournaments.map((tournament, index) => (
-              <li key={index}>
-                <strong>{tournament.name}</strong> - Fecha: {tournament.date}
-                <br />
-                Sede: {tournament.sedeName || 'No asignada'}
-              </li>
+              <div key={index} className="tournament-card">
+                <div className="tournament-icon">
+                  🏆 {/* Icono del trofeo */}
+                </div>
+                <div className="tournament-info">
+                  <h3>{tournament.name}</h3>
+                  <p>Fecha: {tournament.date}</p>
+                  <p>Sede: {tournament.sedeName || 'No asignada'}</p>
+                </div>
+                <div className="tournament-actions">
+                  <button className="action-button">📤</button>
+                  <button className="action-button">🗑️</button>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </div>
       <div className="liguillas-list">
