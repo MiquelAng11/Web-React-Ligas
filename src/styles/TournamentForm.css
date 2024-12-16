@@ -96,3 +96,58 @@
   font-size: 1em;
   color: #f0f0f0;
 }
+
+/* Estilos base para pantallas grandes se mantienen */
+
+/* Responsive para dispositivos pequeños */
+@media (max-width: 768px) {
+  /* Contenedor principal */
+  .tournament-form-container {
+    width: 90%; /* Utiliza el 90% del ancho de la pantalla */
+    padding: 15px;
+    box-shadow: none; /* Simplifica el diseño para móviles */
+    margin: 10px auto; /* Centrado con menos margen */
+  }
+
+  .tournament-form-container h2,
+  .tournament-form-container h3 {
+    font-size: 1.2em; /* Reducir tamaño del texto */
+    margin-bottom: 15px;
+  }
+
+  .tournament-form-container label {
+    font-size: 0.9em;
+  }
+
+  .tournament-form-container input,
+  .tournament-form-container select {
+    padding: 10px;
+    font-size: 0.9em; /* Reducir tamaño de texto y padding */
+  }
+
+  .tournament-form-container button {
+    padding: 10px;
+    font-size: 0.9em;
+    width: 100%; /* Botón ocupa todo el ancho */
+  }
+
+  /* Listas de torneos y liguillas */
+  .tournaments-list,
+  .liguillas-list {
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 100%; /* Listas ocupan todo el ancho */
+    box-shadow: none;
+  }
+
+  .tournaments-list h2,
+  .liguillas-list h2 {
+    font-size: 1.2em;
+  }
+
+  .tournaments-list li,
+  .liguillas-list li {
+    font-size: 0.9em;
+    padding: 8px; /* Reducir espacio interno */
+  }
+}

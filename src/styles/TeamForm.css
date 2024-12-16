@@ -96,3 +96,65 @@
   font-size: 1em;
   color: #f0f0f0;
 }
+
+/* Estilos existentes se mantienen */
+
+/* Responsive para dispositivos pequeños */
+@media (max-width: 768px) {
+  /* Contenedor del formulario */
+  .team-form-container {
+    width: 90%; /* Reducir el ancho para móviles */
+    padding: 15px;
+    margin: 10px auto; /* Centrar con menos margen */
+    box-shadow: none; /* Eliminar sombra en móviles */
+  }
+
+  .team-form-container h2 {
+    font-size: 1.2em; /* Reducir tamaño del encabezado */
+    margin-bottom: 15px;
+  }
+
+  .team-form-container label {
+    font-size: 0.9em; /* Reducir tamaño del texto */
+    margin-bottom: 5px;
+  }
+
+  .team-form-container input,
+  .team-form-container select {
+    padding: 10px; /* Reducir padding */
+    font-size: 0.9em;
+  }
+
+  .team-form-container button {
+    width: 100%; /* Botón ocupa todo el ancho */
+    font-size: 0.9em; /* Reducir tamaño del botón */
+  }
+
+  /* Lista de equipos */
+  .team-list-container {
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 100%; /* Ocupa todo el ancho */
+    box-shadow: none; /* Simplificar diseño */
+  }
+
+  .team-list-container h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+
+  .team-list-container ul {
+    padding: 0;
+  }
+
+  .team-list-container li {
+    font-size: 0.9em;
+    padding: 8px; /* Reducir espacio interno */
+    margin-bottom: 8px;
+  }
+
+  .team-list-container li button {
+    padding: 8px 10px; /* Botón más compacto */
+    font-size: 0.9em;
+  }
+}

@@ -98,3 +98,63 @@
     color: #f0f0f0;
   }
   
+  /* Estilos existentes se mantienen */
+
+/* Responsive para dispositivos pequeños */
+@media (max-width: 768px) {
+  /* Contenedor del formulario */
+  .sede-form-container {
+    width: 90%; /* Reducir el ancho para móviles */
+    padding: 15px;
+    margin: 10px auto; /* Centrar con menos margen */
+    box-shadow: none; /* Eliminar sombra en móviles */
+  }
+
+  .sede-form-container h2 {
+    font-size: 1.2em; /* Reducir tamaño del encabezado */
+    margin-bottom: 15px;
+  }
+
+  .sede-form-container label {
+    font-size: 0.9em; /* Reducir tamaño del texto */
+    margin-bottom: 5px;
+  }
+
+  .sede-form-container input {
+    padding: 10px; /* Reducir padding */
+    font-size: 0.9em;
+  }
+
+  .sede-form-container button {
+    width: 100%; /* Botón ocupa todo el ancho */
+    font-size: 0.9em; /* Reducir tamaño del botón */
+  }
+
+  /* Lista de sedes */
+  .sedes-list-container {
+    padding: 15px;
+    margin: 10px auto;
+    max-width: 100%; /* Ocupa todo el ancho */
+    box-shadow: none; /* Simplificar diseño */
+  }
+
+  .sedes-list-container h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+
+  .sedes-list-container ul {
+    padding: 0;
+  }
+
+  .sedes-list-container li {
+    font-size: 0.9em;
+    padding: 8px; /* Reducir espacio interno */
+    margin-bottom: 8px;
+  }
+
+  .sedes-list-container li button {
+    padding: 8px 10px; /* Botón más compacto */
+    font-size: 0.9em;
+  }
+}

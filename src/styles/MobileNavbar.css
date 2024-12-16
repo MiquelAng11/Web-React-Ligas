@@ -44,8 +44,8 @@
   }
   
   .mobile-links li {
-    display: flex;
-    justify-content: center;
+    margin-left: 8%;
+    margin-right: 8%;
     margin-bottom: 20px;
     text-align: center;
     max-width: 100%;
@@ -66,7 +66,7 @@
   /* Información del usuario */
   .mobile-user {
     margin-top: auto;
-    text-align: center;
+
     padding: 10px 0;
     border-top: 1px solid #333; /* Separador visual */
   }
@@ -76,6 +76,9 @@
     margin-bottom: 10px;
     color: #ffa500;
     font-weight: bold;
+    margin-left: 8%;
+    margin-top: 4%;
+    padding-bottom: 4%;
   }
   
   .mobile-logout-button {
@@ -85,9 +88,10 @@
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    width: 80%; /* Botón más estrecho */
+    width: 85%; /* Botón más estrecho */
     margin: 0 auto; /* Centrado */
     text-align: center;
+    margin-left: 8%;
   }
   
   .mobile-logout-button:hover {
