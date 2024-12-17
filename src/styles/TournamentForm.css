@@ -1,12 +1,10 @@
 .tournament-form-container {
-  margin: 0 auto; /* Centrado */
-  padding: 20px;
-  width: 62.5vh; /* Llenar el contenedor */
-  border-radius: 10px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-  background-color: #2c2c2c;
-  color: #f0f0f0;
+  width: 100%; /* Formulario ocupa todo el contenedor */
+  padding: 10px; /* Reducir padding */
+  box-sizing: border-box; /* Evita desbordamiento horizontal */
 }
+
+
 
 .tournament-form-container h2,
 .tournament-form-container h3 {
@@ -220,3 +218,76 @@
   transform: scale(1.1);
   color: #e69500;
 }
+
+/* Botón flotante */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 2em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.floating-button:hover {
+  background-color: #e69500;
+  transform: scale(1.1);
+}
+
+/* Overlay del popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Contenido del popup */
+.popup-content {
+  background-color: #2c2c2c;
+  padding: 15px; /* Reducir padding para mejor ajuste */
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  color: #f0f0f0;
+  height: 90%;
+  overflow-y: auto;
+  box-sizing: border-box; /* Evitar desbordamiento */
+}
+
+/* Botón de cierre del popup */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #e03e3e;
+}
+

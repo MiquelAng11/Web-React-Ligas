@@ -1,31 +1,28 @@
-// pages/torneos.js
-import React from 'react';
+import React, { useState } from 'react';
 import Tournament from '../components/Tournament';
 import '../styles/TournamentForm.css';
 
 function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, sedes }) {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
   return (
     <div className="body">
       <h1 style={{ color: '#ffa500', textAlign: 'center' }}>Torneos y Liguillas</h1>
-      <Tournament
-        teams={teams}
-        addTournament={addTournament}
-        addRoundRobin={addRoundRobin}
-        sedes={sedes}
-      />
+
+      {/* Lista de Torneos */}
       <div className="tournaments-list">
         <h2>Lista de Torneos</h2>
         {tournaments.length === 0 ? (
-          <p style={{ textAlign: 'center', color: '#f0f0f0' }}>
-            No hay torneos creados
-          </p>
+          <p style={{ textAlign: 'center', color: '#f0f0f0' }}>No hay torneos creados</p>
         ) : (
           <div className="tournament-cards">
             {tournaments.map((tournament, index) => (
               <div key={index} className="tournament-card">
-                <div className="tournament-icon">
-                  🏆 {/* Icono del trofeo */}
-                </div>
+                <div className="tournament-icon">🏆</div>
                 <div className="tournament-info">
                   <h3>{tournament.name}</h3>
                   <p>Fecha: {tournament.date}</p>
@@ -40,24 +37,24 @@ function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, 
           </div>
         )}
       </div>
-      <div className="liguillas-list">
-        <h2>Lista de Liguillas</h2>
-        {liguillas.length === 0 ? (
-          <p style={{ textAlign: 'center', color: '#f0f0f0' }}>
-            No hay liguillas creadas
-          </p>
-        ) : (
-          <ul>
-            {liguillas.map((liguilla, index) => (
-              <li key={index}>
-                <strong>{liguilla.name}</strong> - Fecha: {liguilla.date}
-                <br />
-                Sede: {liguilla.sedeName || 'No asignada'}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+
+      {/* Botón Flotante */}
+      <button className="floating-button" onClick={togglePopup}>+</button>
+
+      {/* Popup Modal */}
+      {isPopupOpen && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <button className="close-button" onClick={togglePopup}>X</button>
+            <Tournament
+              teams={teams}
+              addTournament={addTournament}
+              addRoundRobin={addRoundRobin}
+              sedes={sedes}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
