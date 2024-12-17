@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/TeamForm.css'; 
+//import '../styles/TeamForm.css'; 
 
 function TeamForm({ addTeam, addPlayerToTeam, teams }) {
   const [teamName, setTeamName] = useState('');
