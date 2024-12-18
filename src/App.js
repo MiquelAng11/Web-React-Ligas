@@ -78,6 +78,16 @@ function App() {
     setSedes((prevSedes) => prevSedes.filter((_, i) => i !== index));
   };
 
+  const updateTournament = (index, updatedTournament) => {
+    setTournaments((prevTournaments) =>
+      prevTournaments.map((tournament, i) =>
+        i === index ? updatedTournament : tournament
+      )
+    );
+  };
+  
+  
+
   return (
     <Router>
       <div className="app">
@@ -109,6 +119,7 @@ function App() {
                         addTournament={addTournament}
                         addRoundRobin={addRoundRobin}
                         sedes={sedes}
+                        updateTournament={updateTournament}
                       />
                     }
                   />

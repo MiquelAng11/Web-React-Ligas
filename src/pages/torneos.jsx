@@ -3,17 +3,60 @@ import { useNavigate } from 'react-router-dom';
 import Tournament from '../components/Tournament';
 import '../styles/TournamentForm.css';
 
-function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, sedes }) {
+function Torneos({
+  teams,
+  tournaments,
+  liguillas,
+  addTournament,
+  addRoundRobin,
+  sedes,
+  updateTournament,
+}) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+  const [editTournamentIndex, setEditTournamentIndex] = useState(null);
+  const [editTournamentData, setEditTournamentData] = useState(null);
   const navigate = useNavigate();
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
   };
 
+  const openEditPopup = (index) => {
+    setEditTournamentIndex(index);
+    setEditTournamentData(tournaments[index]);
+    setIsEditPopupOpen(true);
+  };
+
+  const closeEditPopup = () => {
+    setIsEditPopupOpen(false);
+    setEditTournamentIndex(null);
+    setEditTournamentData(null);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditTournamentData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleTeamsSelection = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+    setEditTournamentData((prev) => ({ ...prev, teams: selectedOptions }));
+  };
+
+  const saveTournamentChanges = () => {
+    const updatedTournament = {
+      ...editTournamentData,
+      teams: editTournamentData.teams || [],
+    };
+    updateTournament(editTournamentIndex, updatedTournament);
+    closeEditPopup();
+  };
+
   return (
     <div className="body">
       <h1 style={{ color: '#ffa500', textAlign: 'center' }}>Torneos y Liguillas</h1>
+      {/* Lista de Torneos */}
       <div className="tournaments-list">
         <h2>Lista de Torneos</h2>
         {tournaments.length === 0 ? (
@@ -21,21 +64,32 @@ function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, 
         ) : (
           <div className="tournament-cards">
             {tournaments.map((tournament, index) => (
-              <div
-                key={index}
-                className="tournament-card"
-                onClick={() => navigate(`/torneo/${index}`)}
-                style={{ cursor: 'pointer' }}
-              >
+              <div key={index} className="tournament-card">
                 <div className="tournament-icon">🏆</div>
-                <div className="tournament-info">
+                <div
+                  className="tournament-info"
+                  onClick={() => navigate(`/torneo/${index}`)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <h3>{tournament.name}</h3>
                   <p>Fecha: {tournament.date}</p>
                   <p>Sede: {tournament.sedeName || 'No asignada'}</p>
+                  <p>
+                    Equipos:{' '}
+                    {tournament.teams && tournament.teams.length > 0
+                      ? tournament.teams.join(', ')
+                      : 'Sin equipos'}
+                  </p>
                 </div>
                 <div className="tournament-actions">
                   <button className="action-button">📤</button>
                   <button className="action-button">🗑️</button>
+                  <button
+                    className="action-button"
+                    onClick={() => openEditPopup(index)}
+                  >
+                    ⚙️
+                  </button>
                 </div>
               </div>
             ))}
@@ -44,19 +98,76 @@ function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, 
       </div>
 
       {/* Botón Flotante */}
-      <button className="floating-button" onClick={togglePopup}>+</button>
+      <button className="floating-button" onClick={togglePopup}>
+        +
+      </button>
 
-      {/* Popup Modal */}
+      {/* Popup Modal de Creación */}
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-content">
-            <button className="close-button" onClick={togglePopup}>X</button>
+            <button className="close-button" onClick={togglePopup}>
+              X
+            </button>
             <Tournament
               teams={teams}
               addTournament={addTournament}
               addRoundRobin={addRoundRobin}
               sedes={sedes}
             />
+          </div>
+        </div>
+      )}
+
+      {/* Popup Modal de Edición */}
+      {isEditPopupOpen && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <button className="close-button" onClick={closeEditPopup}>
+              X
+            </button>
+            <h2 style={{ textAlign: 'center', color: '#ffa500' }}>Editar Torneo</h2>
+            <label>Nombre del Torneo:</label>
+            <input
+              type="text"
+              name="name"
+              value={editTournamentData?.name || ''}
+              onChange={handleEditChange}
+            />
+            <label>Fecha del Torneo:</label>
+            <input
+              type="date"
+              name="date"
+              value={editTournamentData?.date || ''}
+              onChange={handleEditChange}
+            />
+            <label>Sede del Torneo:</label>
+            <select
+              name="sedeName"
+              value={editTournamentData?.sedeName || ''}
+              onChange={handleEditChange}
+            >
+              <option value="">Selecciona una sede</option>
+              {sedes.map((sede, index) => (
+                <option key={index} value={sede.sedeName}>
+                  {sede.sedeName}
+                </option>
+              ))}
+            </select>
+            <label>Añadir Equipos:</label>
+            <select
+              multiple
+              value={editTournamentData?.teams || []}
+              onChange={handleTeamsSelection}
+              style={{ height: '100px', width: '100%' }}
+            >
+              {teams.map((team, index) => (
+                <option key={index} value={team.teamName}>
+                  {team.teamName}
+                </option>
+              ))}
+            </select>
+            <button onClick={saveTournamentChanges}>Guardar Cambios</button>
           </div>
         </div>
       )}
