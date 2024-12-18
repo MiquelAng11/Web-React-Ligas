@@ -267,9 +267,10 @@
   position: relative;
   color: #f0f0f0;
   height: 90%;
-  overflow-y: auto;
+  overflow-y: auto; /* Scroll vertical si el contenido excede la altura */
   box-sizing: border-box; /* Evitar desbordamiento */
 }
+
 
 /* Botón de cierre del popup */
 .close-button {

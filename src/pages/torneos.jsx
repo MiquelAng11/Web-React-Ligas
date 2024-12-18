@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Tournament from '../components/Tournament';
 import '../styles/TournamentForm.css';
 
 function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, sedes }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate();
 
   const togglePopup = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -12,8 +14,6 @@ function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, 
   return (
     <div className="body">
       <h1 style={{ color: '#ffa500', textAlign: 'center' }}>Torneos y Liguillas</h1>
-
-      {/* Lista de Torneos */}
       <div className="tournaments-list">
         <h2>Lista de Torneos</h2>
         {tournaments.length === 0 ? (
@@ -21,7 +21,12 @@ function Torneos({ teams, tournaments, liguillas, addTournament, addRoundRobin, 
         ) : (
           <div className="tournament-cards">
             {tournaments.map((tournament, index) => (
-              <div key={index} className="tournament-card">
+              <div
+                key={index}
+                className="tournament-card"
+                onClick={() => navigate(`/torneo/${index}`)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="tournament-icon">🏆</div>
                 <div className="tournament-info">
                   <h3>{tournament.name}</h3>

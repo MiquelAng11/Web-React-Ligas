@@ -11,6 +11,14 @@ function Tournament({ teams = [], addTournament, addRoundRobin, sedes = [] }) {
   const [roundRobinDate, setRoundRobinDate] = useState('');
   const [roundRobinSede, setRoundRobinSede] = useState('');
 
+  const [selectedTeams, setSelectedTeams] = useState([]);
+
+  const handleTeamSelection = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+    setSelectedTeams(selectedOptions);
+  };
+
+
   const handleCreateTournament = () => {
     if (teams.length < 2) {
       alert('Se necesitan al menos 2 equipos para crear un torneo.');
@@ -22,6 +30,7 @@ function Tournament({ teams = [], addTournament, addRoundRobin, sedes = [] }) {
     }
     const tournament = {
       name: tournamentName,
+      teams: selectedTeams,
       date: tournamentDate,
       sedeName: tournamentSede,
       rounds: [],
@@ -30,6 +39,7 @@ function Tournament({ teams = [], addTournament, addRoundRobin, sedes = [] }) {
     setTournamentName('');
     setTournamentDate('');
     setTournamentSede('');
+    setSelectedTeams([]);
   };
 
   const handleCreateRoundRobin = () => {
@@ -62,6 +72,20 @@ function Tournament({ teams = [], addTournament, addRoundRobin, sedes = [] }) {
         value={tournamentName}
         onChange={(e) => setTournamentName(e.target.value)}
       />
+      <label>Seleccionar Equipos:</label>
+      <select
+        multiple
+        value={selectedTeams}
+        onChange={handleTeamSelection}
+        style={{ height: '100px' }} 
+      >
+        {teams.map((team, index) => (
+          <option key={index} value={team.teamName}>
+            {team.teamName}
+          </option>
+        ))}
+      </select>
+
       <label>Fecha del Torneo:</label>
       <input
         type="date"
