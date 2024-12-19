@@ -12,6 +12,7 @@ import Inicio from './pages/inicio';
 import './App.css';
 import MobileNavbar from './components/MobileNavbar';
 import EquiposTorneo from './pages/EquiposTorneo';
+import SedeDetalles from './pages/SedeDetalles';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -68,11 +69,12 @@ function App() {
     console.log('Nueva liguilla agregada:', liguilla);
   };
 
-  // Function to add a sede
-  const addSede = (sedeName, address) => {
-    setSedes([...sedes, { sedeName, address }]);
+  const addSede = (sedeData) => {
+    console.log("Sede añadida:", sedeData); // Para depuración
+    setSedes((prevSedes) => [...prevSedes, sedeData]);
   };
-
+  
+  
   // Function to remove a sede
   const removeSede = (index) => {
     setSedes((prevSedes) => prevSedes.filter((_, i) => i !== index));
@@ -85,8 +87,8 @@ function App() {
       )
     );
   };
-  
-  
+
+
 
   return (
     <Router>
@@ -131,6 +133,11 @@ function App() {
                     path="/torneo/:id"
                     element={<EquiposTorneo tournaments={tournaments} />}
                   />
+                  <Route
+                    path="/sede/:id"
+                    element={<SedeDetalles sedes={sedes} tournaments={tournaments} />}
+                  />
+
                   <Route
                     path="/sedes"
                     element={

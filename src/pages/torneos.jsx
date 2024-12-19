@@ -109,14 +109,18 @@ function Torneos({
             <button className="close-button" onClick={togglePopup}>
               X
             </button>
-            <Tournament
-              teams={teams}
-              addTournament={addTournament}
-              addRoundRobin={addRoundRobin}
-              sedes={sedes}
-            />
+            <div className="scrollable-content">
+              <Tournament
+                teams={teams}
+                addTournament={addTournament}
+                addRoundRobin={addRoundRobin}
+                sedes={sedes}
+              />
+            </div>
           </div>
         </div>
+
+
       )}
 
       {/* Popup Modal de Edición */}

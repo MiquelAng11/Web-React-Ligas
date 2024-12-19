@@ -259,18 +259,17 @@
 /* Contenido del popup */
 .popup-content {
   background-color: #2c2c2c;
-  padding: 15px; /* Reducir padding para mejor ajuste */
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
   width: 90%;
   max-width: 500px;
+  height: 90%; /* Altura máxima del popup */
+  overflow-y: auto; /* Activa el scroll */
+  box-sizing: border-box;
   position: relative;
   color: #f0f0f0;
-  height: 90%;
-  overflow-y: auto; /* Scroll vertical si el contenido excede la altura */
-  box-sizing: border-box; /* Evitar desbordamiento */
 }
-
 
 /* Botón de cierre del popup */
 .close-button {
@@ -292,3 +291,7 @@
   background-color: #e03e3e;
 }
 
+.scrollable-content {
+  max-height: 100%; /* O una altura fija como 400px */
+  overflow-y: auto; /* Activa el scroll vertical */
+}
