@@ -20,6 +20,7 @@ function App() {
   const [tournaments, setTournaments] = useState([]);
   const [liguillas, setLiguillas] = useState([]); // New state for liguillas
   const [sedes, setSedes] = useState([]);
+  const [favoriteTournaments, setFavoriteTournaments] = useState([]);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -73,8 +74,8 @@ function App() {
     console.log("Sede añadida:", sedeData); // Para depuración
     setSedes((prevSedes) => [...prevSedes, sedeData]);
   };
-  
-  
+
+
   // Function to remove a sede
   const removeSede = (index) => {
     setSedes((prevSedes) => prevSedes.filter((_, i) => i !== index));
@@ -88,6 +89,30 @@ function App() {
     );
   };
 
+  const toggleFavorite = (index) => {
+    setTournaments((prev) =>
+      prev.map((t, i) => {
+        if (i === index) {
+          const updated = { ...t, isFavorite: !t.isFavorite };
+          // Actualizar la lista de favoritos
+          if (updated.isFavorite) {
+            setFavoriteTournaments((fav) => [...fav, updated]);
+          } else {
+            setFavoriteTournaments((fav) =>
+              fav.filter((favT) => favT.name !== updated.name)
+            );
+          }
+          return updated;
+        }
+        return t;
+      })
+    );
+  };
+
+
+  const removeTournament = (index) => {
+    setTournaments((prev) => prev.filter((_, i) => i !== index));
+  };
 
 
   return (
@@ -122,6 +147,8 @@ function App() {
                         addRoundRobin={addRoundRobin}
                         sedes={sedes}
                         updateTournament={updateTournament}
+                        toggleFavorite={toggleFavorite}
+                        removeTournament={removeTournament}
                       />
                     }
                   />
@@ -149,7 +176,15 @@ function App() {
                     }
                   />
                   <Route path="/settings" element={<UserSettings />} />
-                  <Route path="/" element={<Inicio user={user} />} />
+                  <Route
+                    path="/"
+                    element={
+                      <Inicio
+                        user={user}
+                        favoriteTournaments={favoriteTournaments}
+                      />
+                    }
+                  />
                   <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
               </main>

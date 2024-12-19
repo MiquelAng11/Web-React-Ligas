@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Inicio.css';
 
-function Inicio({ user }) {
+function Inicio({ user, favoriteTournaments = [] }) {
   return (
     <div className="inicio-container">
       <h1 className="inicio-titulo">Bienvenido, {user ? user.username : "Usuario"}!</h1>
@@ -29,7 +29,6 @@ function Inicio({ user }) {
             Consulta y organiza a los jugadores de tus equipos con facilidad.
           </p>
         </Link>
-        {/* New Sedes Section */}
         <Link to="/sedes" className="inicio-seccion">
           <h2>📍 Sedes</h2>
           <p>
@@ -37,8 +36,32 @@ function Inicio({ user }) {
           </p>
         </Link>
       </div>
+      <div className="favorite-tournaments-container">
+        <h2 className="favorite-tournaments-title">Torneos Favoritos</h2>
+        {favoriteTournaments.length > 0 ? (
+          favoriteTournaments.map((tournament) => (
+            <div key={tournament.id} className="favorite-tournament-card">
+              <div className="favorite-tournament-info">
+                <h3>{tournament.name}</h3>
+                <p>Fecha: {tournament.date}</p>
+                <p>Sede: {tournament.sedeName}</p>
+                <p>
+                  Equipos:{' '}
+                  {tournament.teams && tournament.teams.length > 0
+                    ? tournament.teams.join(', ')
+                    : 'Sin equipos'}
+                </p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No tienes torneos favoritos.</p>
+        )}
+      </div>
+
     </div>
   );
 }
 
 export default Inicio;
+

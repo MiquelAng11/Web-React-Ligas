@@ -11,6 +11,8 @@ function Torneos({
   addRoundRobin,
   sedes,
   updateTournament,
+  toggleFavorite,
+  removeTournament, // Nueva función para eliminar torneo
 }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
@@ -53,10 +55,17 @@ function Torneos({
     closeEditPopup();
   };
 
+  const handleFavoriteToggle = (index) => {
+    toggleFavorite(index);
+  };
+
+  const handleRemoveTournament = (index) => {
+    removeTournament(index);
+  };
+
   return (
     <div className="body">
       <h1 style={{ color: '#ffa500', textAlign: 'center' }}>Torneos y Liguillas</h1>
-      {/* Lista de Torneos */}
       <div className="tournaments-list">
         <h2>Lista de Torneos</h2>
         {tournaments.length === 0 ? (
@@ -82,8 +91,18 @@ function Torneos({
                   </p>
                 </div>
                 <div className="tournament-actions">
-                  <button className="action-button">📤</button>
-                  <button className="action-button">🗑️</button>
+                  <button
+                    className={`action-button ${tournament.isFavorite ? 'favorite' : ''}`}
+                    onClick={() => handleFavoriteToggle(index)}
+                  >
+                    📥
+                  </button>
+                  <button
+                    className="action-button"
+                    onClick={() => handleRemoveTournament(index)}
+                  >
+                    🗑️
+                  </button>
                   <button
                     className="action-button"
                     onClick={() => openEditPopup(index)}
@@ -97,12 +116,10 @@ function Torneos({
         )}
       </div>
 
-      {/* Botón Flotante */}
       <button className="floating-button" onClick={togglePopup}>
         +
       </button>
 
-      {/* Popup Modal de Creación */}
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-content">
@@ -119,11 +136,8 @@ function Torneos({
             </div>
           </div>
         </div>
-
-
       )}
 
-      {/* Popup Modal de Edición */}
       {isEditPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-content">

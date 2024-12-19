@@ -76,3 +76,48 @@
     }
   }
   
+  /* Contenedor principal de torneos favoritos */
+.favorite-tournaments-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 500px;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+  text-align: center;
+}
+
+/* Título */
+.favorite-tournaments-title {
+  color: #ffa500;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+/* Tarjeta de torneo favorito */
+.favorite-tournament-card {
+  background-color: #404040;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.favorite-tournament-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Información del torneo */
+.favorite-tournament-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #ffa500;
+}
+
+.favorite-tournament-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+  color: #ccc;
+}
